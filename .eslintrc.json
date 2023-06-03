@@ -1,0 +1,59 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
+    "ecmaVersion": 13
+  },
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "linebreak-style": 0,
+    "import/prefer-default-export": "warn",
+    "import/no-default-export": "off",
+    "max-len": ["warn", { "code": 250 }],
+    "no-console": 1,
+    "comma-dangle": "off",
+    "no-plusplus": "off",
+    "no-case-declarations": "off",
+    "implicit-arrow-linebreak": "off",
+    "react/prop-types": "off",
+    "no-new-func": "off",
+    "no-unused-vars": "warn",
+    "camelcase": "warn",
+    "padded-blocks": "warn",
+    "brace-style": "warn",
+    "no-multi-spaces": "warn",
+    "spaced-comment": "warn",
+    "indent": "warn",
+    "no-trailing-spaces": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-param-reassign": "warn",
+    "arrow-body-style": "warn",
+    "no-empty": "warn",
+    "prefer-const": "warn",
+    "no-nested-ternary": "warn",
+    "no-lonely-if": "warn",
+    "operator-linebreak": "off",
+    "prefer-template": "warn",
+    "object-curly-spacing": "off",
+    "object-curly-newline": "warn",
+    "func-names": "warn",
+    "prefer-arrow-callback": "warn",
+    "object-shorthand": "warn",
+    "no-extra-semi": "off",
+    "dot-notation": "warn"
+  }
+}

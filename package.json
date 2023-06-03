@@ -1,0 +1,89 @@
+{
+  "name": "react-webpack-demo",
+  "version": "1.0.0",
+  "webpackConfigVersion": "1.0.15",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "fullCompanyName": "",
+  "shortCompanyName": "",
+  "appCode": "",
+  "appName": "React Webpack Demo App",
+  "longAppName": "React Webpack Application",
+  "keywords": [],
+  "author": "Mark Jovis",
+  "license": "GNU",
+  "dependencies": {
+    "@fvilers/disable-react-devtools": "^1.3.0",
+    "autoprefixer": "^10.4.14",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.21.8",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-styled-components": "^2.1.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-webpack-plugin": "^4.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.2",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "source-map-loader": "^4.0.1",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.3.2",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --env env=local ENV=development port=3456 --open",
+    "start:dev": "webpack-dev-server --env env=dev ENV=production port=3456 --open",
+    "start:qa": "webpack-dev-server --env env=qa ENV=development port=3456 --open",
+    "start:stage": "webpack-dev-server --env env=stage ENV=development port=3456 --open",
+    "start:prod": "webpack-dev-server --env env=prod ENV=production port=3456 --open",
+    "build:local": "webpack --env env=local ENV=production",
+    "build:dev": "webpack --env env=dev ENV=production",
+    "build:qa": "webpack --env env=qa ENV=production",
+    "build:stage": "webpack --env env=stage ENV=production",
+    "build:prod": "webpack --env env=prod ENV=production",
+    "branch": "git push origin dev",
+    "publish-patch": "npm version patch && npm run branch",
+    "publish-minor": "npm version minor && npm run branch",
+    "publish-major": "npm version major && npm run branch"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
