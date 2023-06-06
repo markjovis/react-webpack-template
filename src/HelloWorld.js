@@ -17,7 +17,15 @@ const HelloWorld = () => {
           <img src={hello} width="800" height="300"></img>
           <img src={reactLogo} width="300" height="300"></img>
           <img src={webpackLogo} width="300" height="300"></img>
-          <p style={{color: '#8FD3F5'}}>Created with &quot;create-react-webpack&quot; CLI</p>
+          <p>
+            <a
+              href='https://www.npmjs.com/package/create-react-webpack-proj?activeTab=readme'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Created with &quot;create-react-webpack-proj&quot; CLI
+            </a>
+          </p>
         </div>
       <p>&nbsp;</p>
       <div>
