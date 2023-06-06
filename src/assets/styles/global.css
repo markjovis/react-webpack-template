@@ -15,10 +15,19 @@ html * {
 }
 
 body {   
-    background-image: url(../images/background.jpg);
-    color: white;
+  background-image: url(../images/background.jpg);
+  color: white;
 }
 
 h1 {
-    color: red;
+  color: red;
+}
+
+a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #8FD3F5;
+}
+a:hover {
+  color: yellowgreen;
 }
