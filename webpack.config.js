@@ -9,6 +9,7 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const createEnvironmentHash = require('./webpack_utils/createEnvironmentHash');
 const terminal = require('./webpack_utils/terminal');
@@ -118,6 +119,7 @@ module.exports = (mode) => {
             compact: true,
             sourceMaps: !isProd, // in prod, set to false
             inputSourceMap: !isProd, // in prod, set to false
+            plugins: [!isProd ? require.resolve('react-refresh/babel') : {}]
           },
         },
         {
@@ -144,6 +146,7 @@ module.exports = (mode) => {
       ],
     },
     plugins: [
+      !isProd ? new ReactRefreshWebpackPlugin() : () => {},
       new HtmlWebpackPlugin({
         inject: true,
         template: path.join(__dirname, 'public', 'index.html'), // to import index.html file inside index.js
