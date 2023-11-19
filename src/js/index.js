@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-import pkg from '../package.json';
+import pkg from '../../package.json';
 import HelloWorld from './HelloWorld';
 
 if (process.env.NODE_ENV === 'production') {
