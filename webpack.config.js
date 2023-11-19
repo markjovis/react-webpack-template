@@ -13,10 +13,12 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const createEnvironmentHash = require('./webpack_utils/createEnvironmentHash');
 const terminal = require('./webpack_utils/terminal');
+const pkg = require('./package.json');
 
 module.exports = (mode) => {
   process.env.NODE_ENV = mode.ENV;
   const isProd = process.env.NODE_ENV === 'production';
+  const isTs = pkg.isTypeScript;
   const appDirectory = fs.realpathSync(process.cwd());
   const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
@@ -26,7 +28,7 @@ module.exports = (mode) => {
   terminal(mode);
 
   return {
-    entry: '/src/index.js',
+    entry: isTs ? '/src/ts/index.tsx' : '/src/js/index.js',
     output: {
       pathinfo: !isProd, // In production should be false.
       publicPath: '/',
@@ -86,7 +88,7 @@ module.exports = (mode) => {
     mode: process.env.NODE_ENV,
     devtool: isProd
       ? false // 'source-map'
-      : 'cheap-module-source-map',
+      : 'eval-cheap-module-source-map',
     devServer: {
       compress: true,
       hot: true,
@@ -104,13 +106,21 @@ module.exports = (mode) => {
     module: {
       strictExportPresence: true,
       rules: [
+        // Extracts existing source maps from all JavaScript and/or TypeScript entries.
         {
           test: /\.(js|ts)$/,
           enforce: 'pre',
           use: ['source-map-loader'],
         },
+        // TS and TSX files are parsed using ts-loader.
         {
-          test: /\.(js|ts)$/,
+          test: /\.(ts|tsx)$/,
+          enforce: 'pre',
+          use: ['ts-loader'],
+        },
+        // JS and JSX files are parsed using babel-loader.
+        {
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/, // excluding the node_modules folder
           loader: 'babel-loader',
           options: {

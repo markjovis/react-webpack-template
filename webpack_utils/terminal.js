@@ -6,6 +6,10 @@ module.exports = (mode) => {
   let job;
   if (mode.WEBPACK_BUILD) job = 'Bundling and building your code';
   if (mode.WEBPACK_SERVE) job = 'Starting DEV server';
+
+  const isTs = pkg.isTypeScript;
+  const msg = isTs ? '\x1b[46m ** Configured for TYPESCRIPT ** \x1b[0m' : '\x1b[100m ** Configured for JAVASCRIPT ** \x1b[0m';
+
   console.clear();
   console.info('');
   console.info(`\x1b[31m\x1b[43m *** Welcome to ${pkg.appName} Project (react-app-webpack) *** \x1b[0m`);
@@ -18,6 +22,8 @@ module.exports = (mode) => {
     console.info(`\x1b[35m Local:                  ${mode.type}://localhost:${mode.port}\x1b[0m`);
     console.info(`\x1b[35m On your local network:  ${mode.type}://${addresses[0]}:${mode.port}\x1b[0m`);
   }
+  console.info('');
+  console.info(msg);
   console.info('');
   console.info('\x1b[36m Please wait ...\x1b[0m');
   console.info('');
