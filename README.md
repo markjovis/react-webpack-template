@@ -1,7 +1,7 @@
 # react-webpack-template
-A fully configured React webpack boiler plate. It includes ***Tailwind***, ***Environments***, ***ESLint***, and support for ***TypeScript*** (**ts**, **tsx**) and ***JavaScript*** (**js**, **jsx**).  t is fully customizable. You can remove, add, or modify default configuration according to your requirements.
+A fully configured React webpack boiler plate. It includes ***Tailwind***, ***Environments***, ***ESLint***, ***TypeScript*** (**ts**, **tsx**) and regular ***JavaScript*** (**js**, **jsx**). It is fully customizable. You can remove, add, or modify default configuration according to your requirements.
 
-In this latest release (version **1.0.3**), I have added full configuration and implementation of ***TypeScript***. You can now run your project in ***JavaScript*** or ***TypeScript*** via a simple variable setting in package.json.
+In this latest release (version **1.0.3**), I have added full configuration and implementation of ***TypeScript***. You can now run your project development in ***TypeScript*** or ***JavaScript*** via a simple variable setting in package.json.
 
 **NOTICE**: **The default development setting is TypeScript. If you prefer regular JavaScript instead, you must set variable isTypeScript to false in package.json**!
 
