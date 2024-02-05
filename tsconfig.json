@@ -7,13 +7,14 @@
         "esModuleInterop": true,                // Disables namespace imports (import * as fs from "fs") and enables CJS/AMD/UMD style imports (import fs from "fs").
         "noImplicitAny": true,                  // If true, TypeScript will issue an error whenever it would have inferred any.
         "noEmitOnError": true,                  // if true, TypeScript will not emit compiler output files like JavaScript source code, source-maps or declarations if any errors were reported.
-        "outDir": "dist",                       // Files are emitted into this directory.
-        "rootDir": "/",                         // Longest common path of all non-declaration input files.
+        "outDir": "./dist",                     // Files are emitted into this directory.
+        "rootDir": "./",                        // Longest common path of all non-declaration input files.
         "sourceMap": true,                      // Generate corrresponding .map file.
         "allowJs": true,                        // Allow JavaScript files to be compiled.
         "moduleResolution": "node",             // Resolve modules using Node.js style.
         "resolveJsonModule": true,              // Include modules imported with .json extension.
         "declaration": true,                    // Generate corresponding .d.ts file.
+        "noEmit": false                         // Ensure that the "noEmit" option isn't set to true. If it's true, TypeScript will perform type-checking but won't generate any output files.
     },
     "exclude": [
         "node_modules",
