@@ -1,33 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.js';
 
 @font-face {
   font-family: 'nexa';
-  src: local('nexa'),
-    url(../fonts/Nexa-Heavy.ttf) format('truetype');
+  src: local('nexa'), url(../fonts/Nexa-Heavy.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-html * {
-  font-family: 'nexa';
+html,
+
+body {
+  @apply font-nexa text-white;
+  /* Option 1: Use the custom background utility if available */
+  @apply bg-custom-bg;
+  /* If that doesn’t work, verify the URL relative to the compiled CSS */
 }
 
-body {   
-  background-image: url(../images/background.jpg);
-  color: white;
-}
-
-h1 {
-  color: red;
-}
-
+/* Style anchor tags with Tailwind’s @apply in your CSS */
 a {
-  font-size: 20px;
-  text-decoration: none;
-  color: #8FD3F5;
+  @apply no-underline text-[20px] text-custom-link;
 }
+
 a:hover {
-  color: yellowgreen;
+  @apply hover:text-[yellowgreen];
+}
+
+/* Style h1 elements as needed */
+h1 {
+  @apply text-red-500;
 }

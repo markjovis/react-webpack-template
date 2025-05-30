@@ -8,7 +8,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin'); 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const createEnvironmentHash = require('./webpack_utils/createEnvironmentHash');
@@ -44,7 +44,7 @@ module.exports = (mode) => {
       clean: true,
     },
     cache: !isProd, // In production should be false.
-    // If cache setting is needed.
+    // If cache setting is needed, uncomment below.
     // cache: {
     //   type: 'filesystem',
     //   version: createEnvironmentHash(mode.env),
@@ -82,6 +82,8 @@ module.exports = (mode) => {
       // },
       fallback: {
         fs: false,
+        // Needed when using libraries with node.js code that use require('modules').
+        buffer: require.resolve('buffer/')
       },
     },
     target: 'web',
@@ -94,10 +96,13 @@ module.exports = (mode) => {
       hot: true,
       port: mode.port,
       server: mode.type,
+      host: 'localhost',
+      allowedHosts: 'all',
       historyApiFallback: true,
       client: {
         logging: 'info',
-      },
+        overlay: true // <-- Set this to false if you don't want ESLint warnings and errors to be overlayed into the webpage.
+      }
     },
     performance: {
       maxEntrypointSize: 1000000,
@@ -121,7 +126,7 @@ module.exports = (mode) => {
         // JS and JSX files are parsed using babel-loader.
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/, // excluding the node_modules folder
+          exclude: /node_modules/, // excluding the node_modules folder.
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
@@ -159,7 +164,7 @@ module.exports = (mode) => {
       !isProd ? new ReactRefreshWebpackPlugin() : () => {},
       new HtmlWebpackPlugin({
         inject: true,
-        template: path.join(__dirname, 'public', 'index.html'), // to import index.html file inside index.js
+        template: path.join(__dirname, 'public', 'index.html'), // to import index.html file inside index.js.
         // In production Minify.
         ...(isProd
           ? {
@@ -185,13 +190,18 @@ module.exports = (mode) => {
         path: './.env',
       }),
       new ESLintPlugin({
-        emitWarning: false,
+        extensions: ['js', 'jsx', 'tx', 'tsx'],
+        failOnError: false // <-- If true, in case of ESLint errors, webpack will stop to compile. In production, it should be true.
       }),
       new NodePolyfillPlugin(),
       // Needed for Moment.js.
       new webpack.IgnorePlugin({
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/,
+      }),
+      new webpack.ProvidePlugin({
+        // Needed if using libraries that have node.js code that use require('modules').
+        Buffer: ['buffer', 'Buffer'],
       }),
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].css',

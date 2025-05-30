@@ -6,7 +6,7 @@ import pkg from '../../package.json';
 import HelloWorld from './HelloWorld';
 
 if (process.env.NODE_ENV === 'production') {
-  disableReactDevTools();  
+  disableReactDevTools();
 }
 
 document.getElementById('title').innerHTML = pkg.appName;
