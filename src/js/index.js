@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
+import '../assets/styles/global.css';
 import pkg from '../../package.json';
 import HelloWorld from './HelloWorld';
 

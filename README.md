@@ -1,7 +1,7 @@
 # react-webpack-template
 A fully configured React webpack boiler plate. It includes ***Tailwind***, ***Environments***, ***ESLint***, ***TypeScript*** (**ts**, **tsx**) and regular ***JavaScript*** (**js**, **jsx**). It is fully customizable. You can remove, add, or modify default configuration according to your requirements.
 
-In this latest release (version **1.0.3**), I have added full configuration and implementation of ***TypeScript***. You can now run your project development in ***TypeScript*** or ***JavaScript*** via a simple variable setting in package.json.
+In this latest release (version **2.0.0**), I have added full configuration and implementation of ***TypeScript***. You can now run your project development in ***TypeScript*** or ***JavaScript*** via a simple variable setting in package.json.
 
 **NOTICE**: **The default development setting is TypeScript. If you prefer regular JavaScript instead, you must set variable isTypeScript to false in package.json**!
 
@@ -46,7 +46,7 @@ Optionally, if you'll never use TypeScript, and don't care to have the option fo
 - Remove all **TypeScript configuration files** listed below:
   - tsconfig.json
   - global.d.ts
-- In **webpack.config.js**, remove lines **16**, **21**, and **115 to 120**. Also, in line **31** change the value of variable **entry** to just  **/src/index.js**.
+- In **webpack.config.js**, remove lines **16**, **21**, and **120 to 125**. Also, in line **31** change the value of variable **entry** to just  **/src/index.js**.
 - In **.babelrc**, remove line 5.
 - In **package.json**, remove variable **isTypeScript**.
 - Delete file **.eslintrc.json** and **rename** ***.eslintrc_js_only.json*** to **.eslintrc.json**.
